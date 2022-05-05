@@ -1,8 +1,8 @@
 {
   "include": [
-    "remix.env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
+    "remix.env.d.js",
+    "**/*.js",
+    "**/*.jsx"
   ],
   "compilerOptions": {
     "lib": [
