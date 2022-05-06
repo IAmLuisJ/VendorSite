@@ -1,5 +1,5 @@
 import React from 'react';
-import bbheader from './images/bestbuyheader.png';
+import bbheader from '../images/bestbuyheader.png';
 
 export default function Header() {
     return(
