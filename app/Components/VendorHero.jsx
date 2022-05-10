@@ -1,6 +1,6 @@
 
 const VendorHero = ({params}) => {
-    const vendorName = params.vendorName ? params.vendorName : "Vendor name";
+    //const vendorName = params.vendorName ? params.vendorName : "Vendor name";
     return(
         <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto flex flex-col">
