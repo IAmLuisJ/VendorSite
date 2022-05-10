@@ -1,7 +1,4 @@
-<<<<<<< HEAD:app/Components/Header.jsx
 import bbheader from '../images/bestbuyheader.png';
-=======
->>>>>>> a47062bb70941acbc99868a92879983b5a478bd3:app/Components/Header.js
 
 export default function Header() {
     return(
