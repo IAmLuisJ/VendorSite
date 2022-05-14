@@ -3,18 +3,19 @@ import { json, redirect } from "@remix-run/node";
 import { db } from "~/utils/db.server";
 
 
-async function newVendor(companyName) {
+async function newVendor(companyName, companyEmail, companyCode, userEmail, userName) {
     //TODO: Update this create query
-    await db.user.create({
+    await db.company.create({
         data: {
             name: companyName,
-            email: 'testcomp@bby.com',
-            posts: {
-                create: { title: 'Hello World' },
-            },
-            profile: {
-                create: { bio: 'I like turtles' },
-            },
+            email: companyEmail,
+            companyCode: companyCode,
+            users: {
+                create: {
+                    email: userEmail,
+                    name: userName,
+                },
+            }
         },
     })
 }
@@ -34,13 +35,17 @@ export const loader = () => {
 
 export const action = async ({ request }) => {
     const form = await request.formData();
-    const companyName = form.get("companyName");
-    if (typeof companyName !== "string") {
-        return json({ formError: "Form not submitted correctly" }, { status: 400 })
+    const myaction = form.get("myaction");
+
+    if (myaction == "AddCompany") {
+        const companyName = form.get("companyName");
+        const companyEmail = form.get("companyEmail");
+        if (typeof companyName !== "string") {
+            return json({ formError: "Form not submitted correctly" }, { status: 400 })
+        }
+
+        newVendor(companyName);
     }
-
-    newVendor(companyName);
-
 
     return redirect(`/vendors/vendor.id`);
 }
@@ -48,6 +53,7 @@ export const action = async ({ request }) => {
 const Admin = () => {
     return (<div>
         <Form method="post">
+            <input type="hidden" name="myaction" value="AddCompany" />
             <section class="text-gray-400 bg-gray-900 body-font relative">
                 <div class="container px-5 py-24 mx-auto">
                     <div class="flex flex-col text-center w-full mb-12">
@@ -60,6 +66,12 @@ const Admin = () => {
                                 <div class="relative">
                                     <label for="companyName" class="leading-7 text-sm text-gray-400">Company Name</label>
                                     <input id="companyName" name="companyName" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 h-12 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" />
+                                </div>
+                            </div>
+                            <div class="p-2 w-full">
+                                <div class="relative">
+                                    <label for="companyEmail" class="leading-7 text-sm text-gray-400">Company Email</label>
+                                    <input id="companyEmail" name="companyEmail" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 h-12 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" />
                                 </div>
                             </div>
                             <div class="p-2 w-1/2">
