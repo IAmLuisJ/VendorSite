@@ -4,6 +4,7 @@ import { db } from "~/utils/db.server";
 
 
 async function newVendor(companyName, companyEmail, companyCode, userEmail, userName) {
+    //TODO: Need to validate schema here
     const newVend = await db.company.create({
         data: {
             name: companyName,
@@ -18,7 +19,7 @@ async function newVendor(companyName, companyEmail, companyCode, userEmail, user
         },
     })
 
-    console.log("response from prisma", newVend);
+    //console.log("response from prisma", newVend);
     return newVend;
 }
 
@@ -28,7 +29,7 @@ async function updateVendor(companyId) {
         data: { active: false }
     })
 
-    console.log(updated);
+    console.log("Update Successful", updated);
 }
 
 export const loader = () => {
@@ -49,14 +50,14 @@ export const action = async ({ request }) => {
             return json({ formError: "Form not submitted correctly" }, { status: 400 })
         }
 
-        console.log("Submitting new vendor");
-        console.log("company Name", companyName);
-        console.log("company Email", companyEmail);
-        console.log("company Code", companyCode);
-        console.log("user name", userName);
-        console.log("user email", userEmail);
+        // console.log("Submitting new vendor");
+        // console.log("company Name", companyName);
+        // console.log("company Email", companyEmail);
+        // console.log("company Code", companyCode);
+        // console.log("user name", userName);
+        // console.log("user email", userEmail);
         const vend = await newVendor(companyName, companyEmail, companyCode, userEmail, userName);
-        console.log("response from action", vend);
+        //console.log("response from action", vend);
         return redirect(`/vendors/${vend.companyCode}`);
     }
 
