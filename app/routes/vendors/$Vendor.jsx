@@ -11,6 +11,7 @@ export const LoaderFunction = async ({ params }) => {
     //const vendorCode = params.Vendor;
     //search for vendor in database
     const allVendors = await db.company.findMany();
+    console.log(allVendors);
     //vendorCompanyObject =  findVendor(vendorCode)
     //return vendor object in database
     return allVendors;
