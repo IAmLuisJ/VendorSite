@@ -1,6 +1,6 @@
 
-const VendorHero = ({ params }) => {
-  //const vendorName = params.vendorName ? params.vendorName : "Vendor name";
+const VendorHero = (props) => {
+
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto flex flex-col">
@@ -17,14 +17,14 @@ const VendorHero = ({ params }) => {
                 </svg>
               </div>
               <div className="flex flex-col items-center text-center justify-center">
-                <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">Vendor name</h2>
+                <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">{props.vendorName ? props.vendorName : "Vendor Name"}</h2>
                 <div className="w-12 h-1 bg-blue-500 rounded mt-2 mb-4"></div>
-                <p className="text-base">Info about the Service Provider</p>
+                <p className="text-base">{props.vendorInfo ? props.vendorInfo : "Info about the Service Provider"}</p>
               </div>
             </div>
             <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
               <p className="leading-relaxed text-lg mb-4">Additional Information about the provider and background, experience, installation services offered, or any other relevant info can go here.Additional Information about the provider and background, experience, installation services offered, or any other relevant info can go here.Additional Information about the provider and background, experience, installation services offered, or any other relevant info can go here.</p>
-              <a className="text-blue-500 inline-flex items-center" href="ww.google.com">Learn More can link to vendor site if they have their own
+              <a className="text-blue-500 inline-flex items-center" href="https://ww.google.com">Learn More can link to vendor site if they have their own
                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>

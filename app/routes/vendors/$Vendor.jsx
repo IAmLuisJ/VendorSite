@@ -22,13 +22,14 @@ export const loader = async ({ params }) => {
 
 export default function Vendor() {
     //Vendor object will contain vendor info
-    const vendor = useLoaderData();
+    const data = useLoaderData();
+    const vendor = superjson.parse(data);
     console.log(vendor.companyCode);
     //const companyName = vendor.companyName;
 
     return (<div>
         <Header />
-        <VendorHero />
+        <VendorHero vendorName={vendor.name} vendorInfo={vendor.content} />
         <CompanyContactForm />
         <MapWithContact />
         <Testimonials />
