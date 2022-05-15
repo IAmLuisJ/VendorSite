@@ -43,6 +43,8 @@ model Company {
   email         String        @unique
   name          String?
   companyCode   String        @unique
+  companyInfo   String?
+  companyURL    String?
   content       String?
   active        Boolean       @default(true)
   createdAt     DateTime      @default(now())

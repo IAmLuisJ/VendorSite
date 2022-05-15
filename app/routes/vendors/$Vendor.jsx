@@ -32,7 +32,13 @@ export default function Vendor() {
 
     return (<div>
         <Header />
-        <VendorHero vendorName={vendor ? vendor.name : "Company name"} vendorInfo={vendor ? vendor.content : "Company Info"} />
+        <VendorHero
+            vendorName={vendor.name ? vendor.name : "Company name"}
+            vendorInfo={vendor.companyInfo ? vendor.companyInfo : "Company Info"}
+            vendorContent={vendor.content ? vendor.content : "Additional Information about the provider and background, experience, installation services offered, or any other relevant info can go here.Additional Information about the provider and background, experience, installation services offered, or any other relevant info can go here.Additional Information about the provider and background, experience, installation services offered, or any other relevant info can go here."}
+            vendorURL={vendor.companyURL ? vendor.companyURL : "/vendors/" + vendor.companyCode}
+            vendorLogo={vendor.logoPath ? vendor.logoPath : "https://dummyimage.com/1200x500"}
+        />
         <CompanyContactForm />
         <MapWithContact />
         <Testimonials />

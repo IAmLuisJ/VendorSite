@@ -4,7 +4,6 @@ import { db } from "~/utils/db.server";
 
 
 async function newVendor(companyName, companyEmail, companyCode, userEmail, userName) {
-    //TODO: Need to validate schema here
     try {
         const newVend = await db.company.create({
             data: {
@@ -23,9 +22,6 @@ async function newVendor(companyName, companyEmail, companyCode, userEmail, user
     } catch (error) {
         console.log(error);
     }
-
-
-    //console.log("response from prisma", newVend);
 
 }
 
