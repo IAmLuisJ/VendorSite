@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 
 const CompanyContactForm = () => {
   return (<div>
@@ -31,7 +32,7 @@ const CompanyContactForm = () => {
               <button className="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">Button</button>
             </div>
             <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-              <a className="text-blue-500">example@email.com</a>
+              <Link className="text-blue-500" to="mailto:example@memail.com">example@email.com</Link>
               <p className="leading-normal my-5">49 Smith St.
                 <br />Saint Cloud, MN 56301
               </p>

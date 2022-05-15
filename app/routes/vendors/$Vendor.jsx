@@ -1,3 +1,4 @@
+import { redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import superjson from 'superjson';
 import CompanyContactForm from "~/Components/CompanyContactForm";
@@ -11,8 +12,10 @@ import { db } from "~/utils/db.server";
 export const loader = async ({ params }) => {
     const vendorCode = params.Vendor;
     //search for vendor in database
-    //const allVendors = await db.company.findMany();
     const thisVendor = await db.company.findUnique({ where: { companyCode: vendorCode } });
+    if (!thisVendor) {
+        return redirect("../" + vendorCode);
+    }
     //console.log(thisVendor);
     return superjson.stringify(thisVendor);
 }
@@ -29,7 +32,7 @@ export default function Vendor() {
 
     return (<div>
         <Header />
-        <VendorHero vendorName={vendor.name} vendorInfo={vendor.content} />
+        <VendorHero vendorName={vendor ? vendor.name : "Company name"} vendorInfo={vendor ? vendor.content : "Company Info"} />
         <CompanyContactForm />
         <MapWithContact />
         <Testimonials />

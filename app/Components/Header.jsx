@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 
 export default function Header() {
     return (
@@ -5,9 +6,9 @@ export default function Header() {
             <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center bg-blue-700">
                 <img src="/images/bestbuyheader.PNG" alt="bannerImage" />
                 <nav className="md:ml-auto flex flex-wrap items-center text-lg justify-center">
-                    <a className="mt-5 mr-5 hover:text-gray-900" href="./">Home</a>
-                    <a className="mt-5 mr-5 hover:text-gray-900" href="./">Vendor List</a>
-                    <a className="mt-5 mr-5 hover:text-gray-900" href="./VendorDetail">Vendor Detail</a>
+                    <Link className="mt-5 mr-5 hover:text-gray-900" to="/">Home</Link>
+                    <Link className="mt-5 mr-5 hover:text-gray-900" to="/vendors/vendorlist">Vendor List</Link>
+                    <Link className="mt-5 mr-5 hover:text-gray-900" to="/VendorDetail">Vendor Detail</Link>
                 </nav>
             </div>
         </header>
