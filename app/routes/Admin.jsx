@@ -5,22 +5,28 @@ import { db } from "~/utils/db.server";
 
 async function newVendor(companyName, companyEmail, companyCode, userEmail, userName) {
     //TODO: Need to validate schema here
-    const newVend = await db.company.create({
-        data: {
-            name: companyName,
-            email: companyEmail,
-            companyCode: companyCode,
-            users: {
-                create: {
-                    email: userEmail,
-                    name: userName,
-                },
-            }
-        },
-    })
+    try {
+        const newVend = await db.company.create({
+            data: {
+                name: companyName,
+                email: companyEmail,
+                companyCode: companyCode,
+                users: {
+                    create: {
+                        email: userEmail,
+                        name: userName,
+                    },
+                }
+            },
+        })
+        return newVend;
+    } catch (error) {
+        console.log(error);
+    }
+
 
     //console.log("response from prisma", newVend);
-    return newVend;
+
 }
 
 async function updateVendor(companyId) {
@@ -48,6 +54,9 @@ export const action = async ({ request }) => {
         const userEmail = form.get("email");
         if (typeof companyName !== "string") {
             return json({ formError: "Form not submitted correctly" }, { status: 400 })
+        }
+        if (companyCode.length != 3) {
+            return json({ formError: "companyCode needs to be 3 digits long" }, { status: 400 })
         }
 
         // console.log("Submitting new vendor");
