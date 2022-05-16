@@ -24,6 +24,7 @@ export default function Vendor() {
     //Vendor object will contain vendor info
     const data = useLoaderData();
     const vendor = superjson.parse(data);
+
     //TODO: Pass in image or path to vendorHero
     //TODO: pass in company email to contact form
     //TODO: pass additional info to mapWithContact
@@ -36,10 +37,16 @@ export default function Vendor() {
             vendorName={vendor.name ? vendor.name : "Company name"}
             vendorInfo={vendor.companyInfo ? vendor.companyInfo : "Company Info"}
             vendorContent={vendor.content ? vendor.content : "Additional Information about the provider and background, experience, installation services offered, or any other relevant info can go here.Additional Information about the provider and background, experience, installation services offered, or any other relevant info can go here.Additional Information about the provider and background, experience, installation services offered, or any other relevant info can go here."}
-            vendorURL={vendor.companyURL ? vendor.companyURL : "/vendors/" + vendor.companyCode}
+            vendorURL={vendor.companyURL ? vendor.companyURL : `/vendors/${vendor.companyCode}`}
             vendorLogo={vendor.logoPath ? vendor.logoPath : "https://dummyimage.com/1200x500"}
         />
-        <CompanyContactForm />
+        <CompanyContactForm
+            vendorEmail={vendor.email}
+            companyStreet={vendor.streetAddress}
+            companyState={vendor.stateAddress}
+            companyCity={vendor.cityAddress}
+            companyZip={vendor.zipAddress}
+        />
         <MapWithContact />
         <Testimonials />
     </div>
