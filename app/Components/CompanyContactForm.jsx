@@ -32,7 +32,7 @@ const CompanyContactForm = (props) => {
               <button className="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">Submit</button>
             </div>
             <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-              <Link className="text-blue-500" to="mailto:example@memail.com">{props.vendorEmail ? props.vendorEmail : "example2@email.com"}</Link>
+              <a className="text-blue-500" href="mailto:example@memail.com">{props.vendorEmail ? props.vendorEmail : "example2@email.com"}</a>
               <p className="leading-normal my-5">{props.companyStreet ? props.companyStreet : "49 Smith St."}
                 <br />{props.companyCity ? props.companyCity : "Saint Cloud"}, {props.companyState ? props.companyState : "MN"} {props.companyZip ? props.companyZip : "56301"}
               </p>

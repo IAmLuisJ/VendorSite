@@ -25,11 +25,11 @@ const VendorHero = (props) => {
             </div>
             <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
               <p className="leading-relaxed text-lg mb-4">{props.vendorContent}</p>
-              <Link className="text-blue-500 inline-flex items-center" to={props.vendorURL}>Learn More can link to vendor site if they have their own
+              <a className="text-blue-500 inline-flex items-center" href={props.vendorURL}>Learn More can link to vendor site if they have their own
                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
