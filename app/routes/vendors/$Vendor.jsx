@@ -25,9 +25,6 @@ export default function Vendor() {
     const data = useLoaderData();
     const vendor = superjson.parse(data);
 
-    //TODO: Pass in image or path to vendorHero
-    //TODO: pass in company email to contact form
-    //TODO: pass additional info to mapWithContact
     //TODO: pass Testimonial info down
 
 
@@ -47,7 +44,14 @@ export default function Vendor() {
             companyCity={vendor.cityAddress}
             companyZip={vendor.zipAddress}
         />
-        <MapWithContact />
+        <MapWithContact
+            vendorEmail={vendor.email}
+            companyStreet={vendor.streetAddress}
+            companyState={vendor.stateAddress}
+            companyCity={vendor.cityAddress}
+            companyZip={vendor.zipAddress}
+            companyPhone={vendor.phoneNumber}
+        />
         <Testimonials />
     </div>
     );
