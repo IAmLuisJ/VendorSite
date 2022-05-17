@@ -12,7 +12,7 @@ import { db } from "~/utils/db.server";
 export const loader = async ({ params }) => {
     const vendorCode = params.Vendor;
     //search for vendor in database
-    const thisVendor = await db.company.findUnique({ where: { companyCode: vendorCode } });
+    const thisVendor = await db.company.findUnique({ where: { companyCode: vendorCode }, include: { reviews: true } });
     if (!thisVendor) {
         return redirect("../" + vendorCode);
     }
@@ -24,6 +24,7 @@ export default function Vendor() {
     //Vendor object will contain vendor info
     const data = useLoaderData();
     const vendor = superjson.parse(data);
+    console.log(vendor);
 
     //TODO: pass Testimonial info down
 
