@@ -36,7 +36,6 @@ const CompanyContactForm = (props) => {
                 <br />{props.companyCity ? props.companyCity : "Saint Cloud"}, {props.companyState ? props.companyState : "MN"} {props.companyZip ? props.companyZip : "56301"}
               </p>
               <span className="inline-flex">
-
               </span>
             </div>
           </div>
