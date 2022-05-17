@@ -150,7 +150,7 @@ const Admin = () => {
                             <div className="p-2 w-1/2">
                                 <div className="relative">
                                     <label htmlFor="companyState" className="leading-7 text-sm text-gray-400">State</label>
-                                    <input required type="companyState" id="companyState" name="state" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    <input required type="text" id="companyState" name="companyState" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 </div>
                             </div>
 
@@ -163,7 +163,7 @@ const Admin = () => {
                             <div className="p-2 w-1/2">
                                 <div className="relative">
                                     <label htmlFor="companyZip" className="leading-7 text-sm text-gray-400">Zip</label>
-                                    <input required type="email" id="companyZip" name="companyZip" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    <input required type="text" id="companyZip" name="companyZip" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 </div>
                             </div>
 
@@ -176,7 +176,7 @@ const Admin = () => {
                             <div className="p-2 w-1/2">
                                 <div className="relative">
                                     <label htmlFor="companyPhone" className="leading-7 text-sm text-gray-400">Phone Number</label>
-                                    <input required type="email" id="companyPhone" name="companyPhone" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    <input required type="tel" id="companyPhone" name="companyPhone" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 </div>
                             </div>
 
