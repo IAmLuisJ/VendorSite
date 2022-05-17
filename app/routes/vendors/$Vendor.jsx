@@ -12,7 +12,7 @@ import { db } from "~/utils/db.server";
 export const loader = async ({ params }) => {
     const vendorCode = params.Vendor;
     //search for vendor in database
-    const thisVendor = await db.company.findUnique({ where: { companyCode: vendorCode }, include: { reviews: true } });
+    const thisVendor = await db.company.findUnique({ where: { companyCode: vendorCode }, include: { reviews: { where: { published: true }, } } });
     if (!thisVendor) {
         return redirect("../" + vendorCode);
     }
