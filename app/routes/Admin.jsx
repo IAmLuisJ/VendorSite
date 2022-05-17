@@ -100,6 +100,29 @@ const Admin = () => {
                                     <input id="companyCode" name="companyCode" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 h-12 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" required />
                                 </div>
                             </div>
+
+                            <div className="p-2 w-full">
+                                <div className="relative">
+                                    <label htmlFor="companyCode" className="leading-7 text-sm text-gray-400">Company Info</label>
+                                    <input id="companyCode" name="companyCode" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 h-12 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" required />
+                                </div>
+                            </div>
+
+                            <div className="p-2 w-full">
+                                <div className="relative">
+                                    <label htmlFor="companyCode" className="leading-7 text-sm text-gray-400">Company Content</label>
+                                    <input id="companyCode" name="companyCode" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 h-12 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" required />
+                                </div>
+                            </div>
+
+                            <div className="p-2 w-full">
+                                <div className="relative">
+                                    <label htmlFor="companyCode" className="leading-7 text-sm text-gray-400">Company URL</label>
+                                    <input id="companyCode" name="companyCode" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 h-12 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" required />
+                                </div>
+                            </div>
+
+
                             <div className="flex flex-col text-center w-full mb-12">
                                 <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Create a User with the company</p>
                             </div>
