@@ -53,7 +53,9 @@ export default function Vendor() {
             companyZip={vendor.zipAddress}
             companyPhone={vendor.phoneNumber}
         />
-        <Testimonials />
+        <Testimonials
+            reviews={vendor.reviews}
+        />
     </div>
     );
 }
