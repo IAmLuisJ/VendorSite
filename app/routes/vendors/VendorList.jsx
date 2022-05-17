@@ -8,7 +8,6 @@ import { useLoaderData } from "@remix-run/react";
 export const loader = async ({ params }) => {
     //search for vendor in database
     const allVendors = await db.company.findMany();
-    //vendorCompanyObject =  findVendor(vendorCode)
     //return vendor object in database
     return superjson.stringify(allVendors);
 }

@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 
 const VendorCard = (props) => {
     const vdata = props.vData;
-    //console.log(vdata);
+
     return (<div className="p-4 md:w-1/3">
         <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
             <img className="lg:h-48 md:h-36 w-full object-contain object-center" src={vdata.logoPath ? vdata.logoPath : "https://dummyimage.com/720x400"} alt="blog" />
