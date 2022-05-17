@@ -15,6 +15,9 @@ export default function Header() {
     return (
         <header className="text-white body-font">
             <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center bg-blue-700">
+                <a href="https://www.bestbuy.com/" style={{margin: "0 20px 0 20px"}}>
+                <img class="block" src="https://pisces.bbystatic.com/image2/BestBuy_US/Gallery/BestBuy_Logo_2020-190616.png;maxHeight=80;maxWidth=136" alt="BestBuy.com" height="40" width="68"/>
+                </a>
                 <nav className="flex flex-wrap items-center text-lg justify-center">
                     <Link className="mt-5 mr-5 hover:text-gray-900" to="/">Home</Link>
                     <Link className="mt-5 mr-5 hover:text-gray-900" to="/vendors/vendorlist">Vendor List</Link>
@@ -22,7 +25,7 @@ export default function Header() {
                 </nav>
 
                 
-                <div class="search" style={{color: "#333333", overflow:"auto"}}>
+                <div class="search" style={{color: "#333333", overflow:"auto", marginLeft:"150px"}}>
                     <input type="text" id="searchBox" class="searchTerm" placeholder="Search Best Buy" style={{width:"300px", height:"35px", paddingLeft:"10px"}}/>
                     <button type="submit" class="searchButton" style={{display:"inline-block", top:"5px", left: "-30px", position:"relative", padding:"3px"}} onClick={redirectToSearch}>
                         <span class="fa fa-search">
