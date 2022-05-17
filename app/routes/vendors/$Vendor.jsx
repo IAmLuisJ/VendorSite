@@ -6,16 +6,21 @@ import Header from "~/Components/Header";
 import MapWithContact from "~/Components/MapWithContact";
 import Testimonials from "~/Components/Testimonials";
 import VendorHero from "~/Components/VendorHero";
+import UserGreeting from "~/Components/UserGreeting";
 import { db } from "~/utils/db.server";
 
 
-export const loader = async ({ params }) => {
+export const loader = async ({
+    params,
+    request,
+  }) => {
     const vendorCode = params.Vendor;
     //search for vendor in database
     const thisVendor = await db.company.findUnique({ where: { companyCode: vendorCode }, include: { reviews: { where: { published: true }, } } });
     if (!thisVendor) {
         return redirect("../" + vendorCode);
     }
+    thisVendor.request_headers_user_agent = request.headers.get("User-Agent");
 
     return superjson.stringify(thisVendor);
 }
@@ -26,6 +31,9 @@ export default function Vendor() {
 
     return (<div>
         <Header />
+        <UserGreeting
+            request_headers_user_agent={vendor.request_headers_user_agent}
+        />
         <VendorHero
             vendorName={vendor.name ? vendor.name : "Company name"}
             vendorInfo={vendor.companyInfo ? vendor.companyInfo : "Company Info"}
