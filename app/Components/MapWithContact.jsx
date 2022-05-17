@@ -1,5 +1,10 @@
-
+import {useState} from 'react';
 const MapWithContact = (props) => {
+  const [message, setMessage] = useState();
+
+  function submitMessage() {
+    setMessage(true);
+  }
   return (<div>
     <section className="text-gray-600 body-font relative">
       <div className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
@@ -22,6 +27,10 @@ const MapWithContact = (props) => {
           <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">Feedback</h2>
           <p className="leading-relaxed mb-5 text-gray-600">If you have any questions or feedback about this provider please submit here. This will be passed along to the Best Buy team.</p>
           <div className="relative mb-4">
+          {message ? <div class="alert bg-green-100 rounded-lg py-5 px-6 mb-3 text-base text-black-700 inline-flex items-center w-full alert-dismissible fade show" role="alert">
+            <strong class="mr-1">Message Sent! </strong> You should receive a response within 24 hours.
+          <button type="button" class="btn-close box-content w-4 h-4 p-1 ml-auto text-black-900 border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black-900 hover:opacity-75 hover:no-underline" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div> : null}
             <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
             <input type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
           </div>
@@ -33,7 +42,7 @@ const MapWithContact = (props) => {
             <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
             <textarea id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
           </div>
-          <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">Submit</button>
+          <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg" onClick={()=>submitMessage()}>Submit</button>
           <p className="text-xs text-gray-500 mt-3">Please allow up to 24 hours for a response.</p>
         </div>
       </div>
