@@ -3,13 +3,22 @@ import { json, redirect } from "@remix-run/node";
 import { db } from "~/utils/db.server";
 
 
-async function newVendor(companyName, companyEmail, companyCode, userEmail, userName) {
+async function newVendor(companyName, companyEmail, companyCode, companyInfo, companyContent, companyURL, companyStreet, state, city, zip, logo, phone, userEmail, userName) {
     try {
         const newVend = await db.company.create({
             data: {
                 name: companyName,
                 email: companyEmail,
                 companyCode: companyCode,
+                companyInfo: companyInfo,
+                content: companyContent,
+                companyURL: companyURL,
+                streetAddress: companyStreet,
+                stateAddress: state,
+                cityAddress: city,
+                zipAddress: zip,
+                logoPath: logo,
+                phoneNumber: phone,
                 users: {
                     create: {
                         email: userEmail,
@@ -46,6 +55,16 @@ export const action = async ({ request }) => {
         const companyName = form.get("companyName");
         const companyEmail = form.get("companyEmail");
         const companyCode = form.get("companyCode");
+        const companyInfo = form.get("companyInfo");
+        const companyContent = form.get("companyContent");
+        const companyURL = form.get("companyURL");
+        const companyStreet = form.get("companyStreet");
+        const companyState = form.get("companyState");
+        const companyCity = form.get("companyCity");
+        const companyZip = form.get("companyZip");
+        const companyLogo = form.get("companyLogo");
+        const companyPhone = form.get("companyPhone");
+
         const userName = form.get("name");
         const userEmail = form.get("email");
         if (typeof companyName !== "string") {
@@ -61,7 +80,7 @@ export const action = async ({ request }) => {
         // console.log("company Code", companyCode);
         // console.log("user name", userName);
         // console.log("user email", userEmail);
-        const vend = await newVendor(companyName, companyEmail, companyCode, userEmail, userName);
+        const vend = await newVendor(companyName, companyEmail, companyCode, companyInfo, companyContent, companyURL, companyStreet, companyState, companyCity, companyZip, companyLogo, companyPhone, userEmail, userName);
         return redirect(`/vendors/${vend.companyCode}`);
     }
 
@@ -103,25 +122,63 @@ const Admin = () => {
 
                             <div className="p-2 w-full">
                                 <div className="relative">
-                                    <label htmlFor="companyCode" className="leading-7 text-sm text-gray-400">Company Info</label>
-                                    <input id="companyCode" name="companyCode" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 h-12 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" required />
+                                    <label htmlFor="companyInfo" className="leading-7 text-sm text-gray-400">Company Info</label>
+                                    <input id="companyInfo" name="companyInfo" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 h-12 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" required />
                                 </div>
                             </div>
 
                             <div className="p-2 w-full">
                                 <div className="relative">
-                                    <label htmlFor="companyCode" className="leading-7 text-sm text-gray-400">Company Content</label>
-                                    <input id="companyCode" name="companyCode" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 h-12 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" required />
+                                    <label htmlFor="companyContent" className="leading-7 text-sm text-gray-400">Company Content</label>
+                                    <input id="companyContent" name="companyContent" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 h-12 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" required />
                                 </div>
                             </div>
 
                             <div className="p-2 w-full">
                                 <div className="relative">
-                                    <label htmlFor="companyCode" className="leading-7 text-sm text-gray-400">Company URL</label>
-                                    <input id="companyCode" name="companyCode" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 h-12 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" required />
+                                    <label htmlFor="companyURL" className="leading-7 text-sm text-gray-400">Company URL</label>
+                                    <input id="companyURL" name="companyURL" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 h-12 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" required />
                                 </div>
                             </div>
 
+                            <div className="p-2 w-1/2">
+                                <div className="relative">
+                                    <label htmlFor="vendorStreet" className="leading-7 text-sm text-gray-400">Street</label>
+                                    <input required type="text" id="vendorStreet" name="vendorStreet" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                </div>
+                            </div>
+                            <div className="p-2 w-1/2">
+                                <div className="relative">
+                                    <label htmlFor="companyState" className="leading-7 text-sm text-gray-400">State</label>
+                                    <input required type="companyState" id="companyState" name="state" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                </div>
+                            </div>
+
+                            <div className="p-2 w-1/2">
+                                <div className="relative">
+                                    <label htmlFor="companyCity" className="leading-7 text-sm text-gray-400">City</label>
+                                    <input required type="text" id="companyCity" name="companyCity" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                </div>
+                            </div>
+                            <div className="p-2 w-1/2">
+                                <div className="relative">
+                                    <label htmlFor="companyZip" className="leading-7 text-sm text-gray-400">Zip</label>
+                                    <input required type="email" id="companyZip" name="companyZip" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                </div>
+                            </div>
+
+                            <div className="p-2 w-1/2">
+                                <div className="relative">
+                                    <label htmlFor="companyLogo" className="leading-7 text-sm text-gray-400">Logo URL</label>
+                                    <input required type="text" id="companyLogo" name="companyLogo" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                </div>
+                            </div>
+                            <div className="p-2 w-1/2">
+                                <div className="relative">
+                                    <label htmlFor="companyPhone" className="leading-7 text-sm text-gray-400">Phone Number</label>
+                                    <input required type="email" id="companyPhone" name="companyPhone" className="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-blue-500 focus:bg-gray-900 focus:ring-2 focus:ring-blue-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                </div>
+                            </div>
 
                             <div className="flex flex-col text-center w-full mb-12">
                                 <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Create a User with the company</p>
