@@ -16,18 +16,13 @@ export const loader = async ({ params }) => {
     if (!thisVendor) {
         return redirect("../" + vendorCode);
     }
-    //console.log(thisVendor);
+
     return superjson.stringify(thisVendor);
 }
 
 export default function Vendor() {
-    //Vendor object will contain vendor info
     const data = useLoaderData();
     const vendor = superjson.parse(data);
-    console.log(vendor);
-
-    //TODO: pass Testimonial info down
-
 
     return (<div>
         <Header />
