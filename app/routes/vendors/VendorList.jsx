@@ -15,7 +15,7 @@ export const loader = async ({ params }) => {
 const VendorList = () => {
     const data = useLoaderData();
     const vendorList = superjson.parse(data);
-    console.log(vendorList);
+    // console.log(vendorList);
     return (<div>
         <Header />
         <section className="text-gray-600 body-font">
