@@ -1,5 +1,10 @@
-
+import { useState } from 'react';
 const FeedBackForm = () => {
+    const [message, setMessage] = useState();
+
+    function submitMessage() {
+        setMessage(true);
+    }
     return (
         <section className="text-gray-600 body-font relative">
             <div className="container px-5 py-24 mx-auto">
@@ -8,6 +13,10 @@ const FeedBackForm = () => {
                     <p className="lg:w-2/3 mx-auto leading-relaxed text-base">If you have any questions or feedback about this provider please submit here. This will be passed along to the Best Buy team.</p>
                 </div>
                 <div className="lg:w-1/2 md:w-2/3 mx-auto">
+                    {message ? <div class="alert bg-green-100 rounded-lg py-5 px-6 mb-3 text-base text-black-700 inline-flex items-center w-full alert-dismissible fade show" role="alert">
+                        <strong class="mr-1">Message Sent! </strong> You should receive a response within 24 hours.
+                        <button type="button" class="btn-close box-content w-4 h-4 p-1 ml-auto text-black-900 border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black-900 hover:opacity-75 hover:no-underline" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div> : null}
                     <div className="flex flex-wrap -m-2">
                         <div className="p-2 w-1/2">
                             <div className="relative">
@@ -28,7 +37,7 @@ const FeedBackForm = () => {
                             </div>
                         </div>
                         <div className="p-2 w-full">
-                            <button className="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">Button</button>
+                            <button className="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg" onClick={submitMessage}>Submit</button>
                         </div>
                         <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
                             <a className="text-blue-500" href="mailto:ApplianceInstallOps@bestbuy.com">ApplianceInstallOps@bestbuy.com</a>
