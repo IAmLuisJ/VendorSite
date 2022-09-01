@@ -6,7 +6,6 @@ import Header from "~/Components/Header";
 import MapWithContact from "~/Components/MapWithContact";
 import Testimonials from "~/Components/Testimonials";
 import VendorHero from "~/Components/VendorHero";
-import UserGreeting from "~/Components/UserGreeting";
 import { db } from "~/utils/db.server";
 
 
@@ -31,9 +30,6 @@ export default function Vendor() {
 
     return (<div>
         <Header />
-        <UserGreeting
-            request_headers_user_agent={vendor.request_headers_user_agent}
-        />
         <VendorHero
             vendorName={vendor.name ? vendor.name : "Company name"}
             vendorInfo={vendor.companyInfo ? vendor.companyInfo : "Company Info"}
